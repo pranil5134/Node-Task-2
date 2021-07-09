@@ -1,11 +1,12 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = process.env.PORT ||  5000;
 
 app.use(express.json())
 let Room_details = []
 let Room_booking = []
 let List_of_customer = []
+//To get room details
 app.get("/roomdetails", (req, resp) => {
     try {
         resp.send(Room_details)
@@ -16,6 +17,7 @@ app.get("/roomdetails", (req, resp) => {
 
 })
 
+//to add room
 app.post("/roomdetails", (req, res) => {
     Room_details.push({
         Seats: req.body.Seats,
@@ -27,11 +29,13 @@ app.post("/roomdetails", (req, res) => {
     res.status(200).json({ message: "Room is created" })
 })
 
+//TO get booked room detail
 app.get("/bookroom", (req, resp) => {
 
     resp.send(Room_booking)
 })
 
+// To get of list_cutomer
 app.get("/list_customer", (req, resp) => {
     resp.send(List_of_customer)
 
