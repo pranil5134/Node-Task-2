@@ -17,7 +17,7 @@ app.get("/roomdetails", (req, resp) => {
 
 })
 
-//to add room
+//to add room details
 app.post("/roomdetails", (req, res) => {
     Room_details.push({
         Seats: req.body.Seats,
@@ -41,6 +41,7 @@ app.get("/list_customer", (req, resp) => {
 
 })
 
+// To book a room
 app.post("/bookroom", (req, res) => {
     try {
         let room_not_found = 1;
